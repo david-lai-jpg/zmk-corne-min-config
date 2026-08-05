@@ -10,3 +10,4 @@
 - Added the board configuration, repository guidance, README, and Keymap Drawer artifacts.
 - Built and verified the left, right, and settings-reset firmware locally.
 - Visually inspected the generated key-position and full-keymap diagrams.
+- Added and locally built per-half bootloader chords for positions `0` + `38` and `11` + `39`.

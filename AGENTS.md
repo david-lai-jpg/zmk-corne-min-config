@@ -12,11 +12,14 @@
 
 - `config/corne_min.keymap` — source of truth for bindings and behaviors.
 - `config/corne_min.conf` — source of truth for ZMK feature configuration.
+- `config/src/bootloader_chord.c` — per-half local bootloader chord handling.
 - `config/corne_min.json` — physical 42-key geometry used for local rendering.
 - `KEY_POSITIONS.svg` — canonical position-number map (`0`–`41`).
 - `keymap-drawer/corne_min.svg` — canonical visual keymap.
 
 Always consult both SVGs before changing a position named by number.
+
+Positions `0` + `38` enter the left bootloader; positions `11` + `39` enter the right bootloader after a 750 ms hold. Keep this as a local position-event listener: ZMK combo reset behaviors always execute on the central half.
 
 ## Layer architecture
 

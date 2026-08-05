@@ -40,6 +40,17 @@ Positions are numbered `0`–`41`: three rows of 12 keys, then six thumb keys.
 
 The Backspace/NUMBER key uses `quick-tap-ms = <250>` so a quick second press can be held to repeat Backspace.
 
+## Bootloader chords
+
+Hold both keys for 750 ms to put only that half into UF2 bootloader mode:
+
+- left half: positions `0` + `38`
+- right half: positions `11` + `39`
+
+Connect USB to the half you want to flash before holding its chord; the opposite half is not rebooted.
+
+The implementation listens to locally scanned positions on each half. A normal ZMK combo is not used because reset behaviors invoked by combos always run on the central half.
+
 ## Firmware artifacts
 
 GitHub Actions builds the matrix in [`build.yaml`](build.yaml):

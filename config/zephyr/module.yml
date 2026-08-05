@@ -1,0 +1,3 @@
+name: corne-min-bootloader-chords
+build:
+  cmake: .
