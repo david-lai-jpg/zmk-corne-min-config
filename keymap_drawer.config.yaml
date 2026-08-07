@@ -118,18 +118,18 @@ parse_config:
 
   raw_binding_map:
     # Layer-tap behaviors (thumb keys)
-    "&num_lt_del 0 DEL":
-      tap: $$mdi:backspace-reverse-outline$$
-      hold: NUMBER
-    "&fn_lt_enter 0 ENTER":
+    "&lyr_tap 1 ENTER":
       tap: $$mdi:keyboard-return$$
-      hold: SYMBOLS
+      hold: NUMBER
+    "&lyr_tap 4 BSPC":
+      tap: $$mdi:backspace-reverse-outline$$
+      hold: NAV
     "&mouse_lt_enter 0 0":
       tap: $$mdi:apple-keyboard-option$$
       hold: Fn
     "&mouse_lt_exit 0 0":
       tap: $$mdi:apple-keyboard-option$$
-      hold: SYMBOLS
+      hold: NAV
     "&to 0":
       tap: BASE
       hold: ''
