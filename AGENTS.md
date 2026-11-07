@@ -74,7 +74,7 @@ For keymap changes, require:
 1. all six parsed layers contain exactly 42 bindings;
 2. every keycode resolves against `zmk/app/include/dt-bindings/zmk/keys.h`, and every `&label` resolves to a ZMK builtin or a local definition;
 3. SVGs regenerated locally in the same turn as the edit, with no stale `raw_binding_map` entries left behind;
-4. both standard split firmware targets build;
+4. all three `build.yaml` targets build: left, right, and `settings_reset`;
 5. no dongle, display, encoder, joystick, pointing, or underglow settings enter the build.
 
 ### Local firmware build
@@ -84,4 +84,5 @@ The repo root is a west workspace (`zmk/`, `zephyr/`, `modules/` are git-ignored
 ```sh
 west build -p -s zmk/app -d <out>/left -b corne_min_left -S studio-rpc-usb-uart -- -DSHIELD=rgbled_adapter -DZMK_CONFIG="$PWD/config" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
 west build -p -s zmk/app -d <out>/right -b corne_min_right -- -DSHIELD=rgbled_adapter -DZMK_CONFIG="$PWD/config" -DCONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
+west build -p -s zmk/app -d <out>/reset -b corne_min_left -- -DSHIELD=settings_reset -DZMK_CONFIG="$PWD/config"
 ```
