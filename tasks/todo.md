@@ -4,7 +4,7 @@
 
 ## Done
 
-- 2026-11-07 NAV left-hand numpad: 2–5 → 7 8 9 0, 14–16 → 4 5 6, 26–28 → 1 2 3, 17 → `` ` `` (plain `&kp N*`/`GRAVE`, so Shift gives the symbols). README/AGENTS layer tables updated. Verified: 6 parsed layers × 42, SVGs redrawn, left/right/reset build, right UF2 byte-identical to HEAD. Left UF2 (includes the earlier NAV `-` and thumb swap) at /Users/david/Desktop/corne_min_left_with_studio.uf2. Not committed.
+- 2026-11-07 NAV left-hand numpad: 2–5 → 7 8 9 0, 14–16 → 4 5 6, 26–28 → 1 2 3, 17 → `` ` `` (plain `&kp N*`/`GRAVE`, so Shift gives the symbols). README/AGENTS layer tables updated. Verified: 6 parsed layers × 42, SVGs redrawn, left/right/reset build, right UF2 byte-identical to HEAD. Left UF2 (includes the earlier NAV `-` and thumb swap) at /Users/david/Desktop/corne_min_left_with_studio.uf2. Both 2026-11-07 NAV changes committed and pushed as 6f97115; CI build and draw passed; draw bot commit e214999 (redrawn `keymap-drawer/corne_min.svg`) pulled.
 
 - 2026-11-07 NAV position 11 → `&kp MINUS`; thumb holds swapped (39 `&lyr_tap 3 ENTER` → FN, 41 `mouse_lt_enter` → `num_layer_hold` → NUMBER). Drawer labels, README/AGENTS thumb tables and README HRM-toggle hint (now position 39) updated; README firmware section notes keymap-only changes need only the left image. Verified: 6 parsed layers × 42, SVGs redrawn, left/right/reset build locally, right UF2 byte-identical to a HEAD build. Left UF2 copied to /Users/david/Desktop/corne_min_left_with_studio.uf2. Not committed.
 
