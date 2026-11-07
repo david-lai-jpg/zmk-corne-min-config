@@ -31,7 +31,7 @@ Positions `0` + `38` enter the left bootloader; positions `11` + `39` enter the 
 | 2 | NUMBER | Number row `1`–`0`; symbols via Shift |
 | 3 | FN | Function keys `F1`–`F12` and Bluetooth |
 | 4 | MOUSELESS | Keyboard-driven shortcuts/navigation |
-| 5 | NAV | Arrow cluster, Home/End, Page Up/Down |
+| 5 | NAV | Arrow cluster, Home/End, Page Up/Down (right); numpad `1`–`0` and `` ` `` (left) |
 
 HRM must stay directly above BASE. ZMK checks the highest active layer first, so a higher index would cover the FN media keys and the NAV arrows on the same home-row positions. Home-row mods are off at power-on by design: a layer toggle is not saved, so they turn off again after a restart or a wake from sleep. Toggling HRM blinks the left status LED once: yellow when it turns on, magenta when it turns off (`config/src/hrm_led.c`, central only). The LED is three on/off GPIOs, so only 7 colors exist; orange is not possible. `hrm_led.c` mirrors the rgbled module's private `struct blink_item` and `led_msgq`, so `config/west.yml` pins that module to a commit; re-check the struct before moving the pin.
 
@@ -43,9 +43,9 @@ The arrow cluster is pinned to `↑`=`I`, `←↓→`=`J`/`K`/`L` to mirror the 
 
 | Position | Tap | Hold |
 | ---: | --- | --- |
-| `39` | `ENTER` | NUMBER |
+| `39` | `ENTER` | FN |
 | `40` | `BSPC` | NAV |
-| `41` | toggle MOUSELESS + Right Option | FN |
+| `41` | toggle MOUSELESS + Right Option | NUMBER |
 
 `lyr_tap` drives positions `39` and `40`. Its `quick-tap-ms = <250>` is load-bearing: tap-then-hold within that window repeats the tap key instead of engaging the layer, which is what makes held backspace work on position `40`. Do not remove it.
 

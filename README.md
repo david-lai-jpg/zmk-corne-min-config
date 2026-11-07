@@ -26,9 +26,9 @@ Positions are numbered `0`–`41`: three rows of 12 keys, then six thumb keys.
 | 2 | NUMBER | Number row; symbols via Shift |
 | 3 | FN | Function keys, media, brightness, and Bluetooth profiles |
 | 4 | MOUSELESS | Keyboard-driven shortcuts and navigation |
-| 5 | NAV | Arrows, Home/End, Page Up/Down |
+| 5 | NAV | Arrows, Home/End, Page Up/Down on the right; a numpad (`1`–`0`, and `` ` ``) on the left |
 
-Home-row modifiers are off at power-on. To turn them on or off, hold the FN thumb key (position `41`) and tap the `A` key position. The status LED on the left half blinks yellow once when they turn on and magenta once when they turn off. They turn off again after a restart or a wake from sleep.
+Home-row modifiers are off at power-on. To turn them on or off, hold the FN thumb key (position `39`) and tap the `A` key position. The status LED on the left half blinks yellow once when they turn on and magenta once when they turn off. They turn off again after a restart or a wake from sleep.
 
 ### Thumb keys
 
@@ -37,9 +37,9 @@ Home-row modifiers are off at power-on. To turn them on or off, hold the FN thum
 | 36 | Left Option | — |
 | 37 | Left Command | — |
 | 38 | Space | — |
-| 39 | Enter | NUMBER |
+| 39 | Enter | FN |
 | 40 | Backspace | NAV |
-| 41 | Toggle MOUSELESS + Right Option | FN |
+| 41 | Toggle MOUSELESS + Right Option | NUMBER |
 
 The Backspace/NAV key uses `quick-tap-ms = <250>` so a quick second press can be held to repeat Backspace.
 
@@ -64,7 +64,7 @@ GitHub Actions builds the matrix in [`build.yaml`](build.yaml):
 | `corne_min_right.uf2` | right half | split peripheral |
 | `corne_min_settings_reset.uf2` | either half | clears settings and Bluetooth bonds; reflash normal firmware afterward |
 
-Flash the left and right images to their matching halves. This repository does not produce dongle firmware.
+Flash the left and right images to their matching halves. The keymap runs only on the left (central) half, so a change that touches only `config/corne_min.keymap` needs only the left image. This repository does not produce dongle firmware.
 
 ## Regenerate diagrams
 
