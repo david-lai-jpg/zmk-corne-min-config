@@ -118,10 +118,10 @@ parse_config:
 
   raw_binding_map:
     # Layer-tap behaviors (thumb keys)
-    "&lyr_tap 1 ENTER":
+    "&lyr_tap 2 ENTER":
       tap: $$mdi:keyboard-return$$
       hold: NUMBER
-    "&lyr_tap 4 BSPC":
+    "&lyr_tap 5 BSPC":
       tap: $$mdi:backspace-reverse-outline$$
       hold: NAV
     "&mouse_lt_enter 0 0":
@@ -130,6 +130,9 @@ parse_config:
     "&mouse_lt_exit 0 0":
       tap: $$mdi:apple-keyboard-option$$
       hold: NAV
+    "&tog 1":
+      tap: HRM
+      hold: $$mdi:toggle-switch$$
     "&to 0":
       tap: BASE
       hold: ''
@@ -141,20 +144,20 @@ parse_config:
     "&hml LALT S":
       tap: 'S'
       hold: $$mdi:apple-keyboard-option$$
-    "&hml LGUI D":
+    "&hml LSHFT D":
       tap: 'D'
-      hold: $$mdi:apple-keyboard-command$$
-    "&hml LSHFT F":
-      tap: 'F'
       hold: $$mdi:apple-keyboard-shift$$
+    "&hml LGUI F":
+      tap: 'F'
+      hold: $$mdi:apple-keyboard-command$$
 
     # Home Row Mods (HRMs) - Right hand
-    "&hmr RSHFT J":
+    "&hmr RGUI J":
       tap: 'J'
-      hold: $$mdi:apple-keyboard-shift$$
-    "&hmr RGUI K":
-      tap: 'K'
       hold: $$mdi:apple-keyboard-command$$
+    "&hmr RSHFT K":
+      tap: 'K'
+      hold: $$mdi:apple-keyboard-shift$$
     "&hmr RALT L":
       tap: 'L'
       hold: $$mdi:apple-keyboard-option$$

@@ -16,3 +16,8 @@
 - Built and verified the left, right, and settings-reset firmware locally.
 - Visually inspected the generated key-position and full-keymap diagrams.
 - Added and locally built per-half bootloader chords for positions `0` + `38` and `11` + `39`.
+
+<!-- archived: ad14501f33614f03eb0a5096076453eff9d4c5a9c8c8262f723fdbc9496fb488:1f4c6a856065e84ec15d6f4a7ebc31928fc7026542258d26e57b725b4f151cea -->
+- Added media previous/play-pause/next, volume down/up, and display brightness down/up to FN positions 19-23 and 15-16; regenerated diagrams and verified both standard split targets.
+
+<!-- /archived -->

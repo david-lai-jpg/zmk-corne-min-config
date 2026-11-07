@@ -7,7 +7,7 @@ Firmware for the [Mechboards Corne Min](https://mechboards.co.uk/products/corne-
 - no dongle, display, encoder, joystick, pointing device, or RGB underglow
 - the board's built-in status LED remains enabled through `rgbled_adapter`
 
-The five-layer layout is ported from `/Users/david/Projects/zmk-new_corne`. Corne Min has 42 keys rather than the Eyelash Corne's 48, so its six extra center hardware keys and all unavailable hardware controls are intentionally omitted. Every supported shared physical key keeps the same binding.
+The layout is ported from `/Users/david/Projects/zmk-new_corne`. Corne Min has 42 keys rather than the Eyelash Corne's 48, so its six extra center hardware keys and all unavailable hardware controls are intentionally omitted. Every supported shared physical key keeps the same binding.
 
 ## Key positions
 
@@ -22,10 +22,13 @@ Positions are numbered `0`–`41`: three rows of 12 keys, then six thumb keys.
 | Index | Layer | Purpose |
 | ---: | --- | --- |
 | 0 | BASE | QWERTY with home-row modifiers |
-| 1 | NUMBER | Numpad-style numbers and navigation |
-| 2 | FN | Function keys, navigation, and Bluetooth profiles |
-| 3 | MOUSELESS | Keyboard-driven shortcuts and navigation |
-| 4 | SYMBOLS | Symbols and navigation |
+| 1 | NO HRM | Plain home-row letters (home-row modifiers off) |
+| 2 | NUMBER | Number row; symbols via Shift |
+| 3 | FN | Function keys, media, brightness, and Bluetooth profiles |
+| 4 | MOUSELESS | Keyboard-driven shortcuts and navigation |
+| 5 | NAV | Arrows, Home/End, Page Up/Down |
+
+To turn home-row modifiers off or on, hold the FN thumb key (position `41`) and tap the `A` key position. The setting resets to "on" after a restart or a wake from sleep.
 
 ### Thumb keys
 
@@ -34,11 +37,11 @@ Positions are numbered `0`–`41`: three rows of 12 keys, then six thumb keys.
 | 36 | Left Option | — |
 | 37 | Left Command | — |
 | 38 | Space | — |
-| 39 | Enter | SYMBOLS |
-| 40 | Backspace | NUMBER |
+| 39 | Enter | NUMBER |
+| 40 | Backspace | NAV |
 | 41 | Toggle MOUSELESS + Right Option | FN |
 
-The Backspace/NUMBER key uses `quick-tap-ms = <250>` so a quick second press can be held to repeat Backspace.
+The Backspace/NAV key uses `quick-tap-ms = <250>` so a quick second press can be held to repeat Backspace.
 
 ## Bootloader chords
 

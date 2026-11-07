@@ -26,10 +26,13 @@ Positions `0` + `38` enter the left bootloader; positions `11` + `39` enter the 
 | Index | Name | Purpose |
 | ---: | --- | --- |
 | 0 | BASE | QWERTY and home-row modifiers |
-| 1 | NUMBER | Number row `1`–`0`; symbols via Shift |
-| 2 | FN | Function keys `F1`–`F12` and Bluetooth |
-| 3 | MOUSELESS | Keyboard-driven shortcuts/navigation |
-| 4 | NAV | Arrow cluster, Home/End, Page Up/Down |
+| 1 | NO HRM | Plain home-row letters; toggled by `&tog 1` on FN position `13` |
+| 2 | NUMBER | Number row `1`–`0`; symbols via Shift |
+| 3 | FN | Function keys `F1`–`F12` and Bluetooth |
+| 4 | MOUSELESS | Keyboard-driven shortcuts/navigation |
+| 5 | NAV | Arrow cluster, Home/End, Page Up/Down |
+
+NO HRM must stay directly above BASE. ZMK checks the highest active layer first, so a higher index would cover the FN media keys and the NAV arrows on the same home-row positions. A layer toggle is not saved: home-row mods come back on after a restart or a wake from sleep.
 
 There is no symbols layer. Every symbol it held is `Shift` + a number on NUMBER, so the layer was removed rather than duplicated. Brackets stay on `lbrc_morph`/`rbrc_morph` at position `18`/`30`.
 
@@ -67,8 +70,17 @@ To eyeball the result without a browser, `rsvg-convert -w 1500 keymap-drawer/cor
 
 For keymap changes, require:
 
-1. all five parsed layers contain exactly 42 bindings;
+1. all six parsed layers contain exactly 42 bindings;
 2. every keycode resolves against `zmk/app/include/dt-bindings/zmk/keys.h`, and every `&label` resolves to a ZMK builtin or a local definition;
 3. SVGs regenerated locally in the same turn as the edit, with no stale `raw_binding_map` entries left behind;
 4. both standard split firmware targets build;
 5. no dongle, display, encoder, joystick, pointing, or underglow settings enter the build.
+
+### Local firmware build
+
+The repo root is a west workspace (`zmk/`, `zephyr/`, `modules/` are git-ignored). Limit it to the modules this nRF52 build needs before `west update`, so it fetches about 1 GB instead of every Zephyr module: `west config manifest.project-filter -- "-.*,+zmk,+zephyr,+corne-min-rgbled,+corne-min-board,+hal_nordic,+cmsis,+nanopb,+zmk-studio-messages,+lvgl,+tinycrypt,+segger,+picolibc"` (stored in the untracked `.west/config`). West refuses `west update <name>` for imported modules; change the filter and run plain `west update` instead. Build with a GNU Arm toolchain (`ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb`, `GNUARMEMB_TOOLCHAIN_PATH=<toolchain>/arm-none-eabi`), mirroring `build.yaml`:
+
+```sh
+west build -p -s zmk/app -d <out>/left -b corne_min_left -S studio-rpc-usb-uart -- -DSHIELD=rgbled_adapter -DZMK_CONFIG="$PWD/config" -DCONFIG_ZMK_STUDIO=y -DCONFIG_ZMK_STUDIO_LOCKING=n -DCONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
+west build -p -s zmk/app -d <out>/right -b corne_min_right -- -DSHIELD=rgbled_adapter -DZMK_CONFIG="$PWD/config" -DCONFIG_ZMK_BLE_EXPERIMENTAL_CONN=y
+```
