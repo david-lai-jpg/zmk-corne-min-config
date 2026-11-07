@@ -129,18 +129,20 @@
             display-name = "BASE";
             bindings = <
 &kp TAB    &kp Q          &kp W        &kp E          &kp R       &kp T        &kp Y        &kp U        &kp I      &kp O         &kp P          &kp EQUAL
-&td0       &hml LCTRL A   &hml LALT S  &hml LSHFT D   &hml LGUI F &kp G        &kp H        &hmr RGUI J  &hmr RSHFT K &hmr RALT L &hmr RCTRL SEMI &kp SQT
+&td0       &kp A          &kp S        &kp D          &kp F       &kp G        &kp H        &kp J        &kp K      &kp L         &kp SEMI       &kp SQT
 &kp LCTRL  &kp Z          &kp X        &kp C          &kp V       &kp B        &kp N        &kp M        &kp COMMA  &kp DOT       &kp FSLH       &kp BSLH
                               &kp LALT  &kp LGUI       &kp SPACE   &lyr_tap 2 ENTER  &lyr_tap 5 BSPC  &mouse_lt_enter 0 0
             >;
         };
 
-        // Toggled by &tog 1 on FN. Sits just above BASE so every other layer still wins.
-        no_hrm_layer {
-            display-name = "NO HRM";
+        // Home-row mods: off at power-on, turned on by &tog 1 on FN. Sits just above BASE
+        // so every other layer still wins. Toggling it blinks the status LED once: yellow
+        // on, magenta off (config/src/hrm_led.c).
+        hrm_layer {
+            display-name = "HRM";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans    &trans
-&trans  &kp A   &kp S   &kp D   &kp F   &trans    &trans  &kp J   &kp K   &kp L   &kp SEMI  &trans
+&trans  &trans        &trans       &trans        &trans       &trans    &trans  &trans       &trans        &trans       &trans           &trans
+&trans  &hml LCTRL A  &hml LALT S  &hml LSHFT D  &hml LGUI F  &trans    &trans  &hmr RGUI J  &hmr RSHFT K  &hmr RALT L  &hmr RCTRL SEMI  &trans
 &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans    &trans
                         &trans  &trans  &trans    &trans  &trans  &trans
             >;

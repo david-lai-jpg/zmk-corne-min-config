@@ -11,7 +11,9 @@ manifest:
       import: app/west.yml
     - name: corne-min-rgbled
       url: https://github.com/MechboardsLTD/zmk-module
-      revision: corne-min-rgbled
+      # Pinned (branch corne-min-rgbled): config/src/hrm_led.c mirrors this
+      # module's private blink queue layout. Re-check it before moving the pin.
+      revision: fc827695fb0e6be2d26f93227e00bc83cd0a4825
     - name: corne-min-board
       url: https://github.com/MechboardsLTD/zmk-module
       revision: corne-min

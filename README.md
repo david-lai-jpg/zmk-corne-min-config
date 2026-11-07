@@ -21,14 +21,14 @@ Positions are numbered `0`–`41`: three rows of 12 keys, then six thumb keys.
 
 | Index | Layer | Purpose |
 | ---: | --- | --- |
-| 0 | BASE | QWERTY with home-row modifiers |
-| 1 | NO HRM | Plain home-row letters (home-row modifiers off) |
+| 0 | BASE | QWERTY, plain home row |
+| 1 | HRM | Home-row modifiers (off at power-on) |
 | 2 | NUMBER | Number row; symbols via Shift |
 | 3 | FN | Function keys, media, brightness, and Bluetooth profiles |
 | 4 | MOUSELESS | Keyboard-driven shortcuts and navigation |
 | 5 | NAV | Arrows, Home/End, Page Up/Down |
 
-To turn home-row modifiers off or on, hold the FN thumb key (position `41`) and tap the `A` key position. The setting resets to "on" after a restart or a wake from sleep.
+Home-row modifiers are off at power-on. To turn them on or off, hold the FN thumb key (position `41`) and tap the `A` key position. The status LED on the left half blinks yellow once when they turn on and magenta once when they turn off. They turn off again after a restart or a wake from sleep.
 
 ### Thumb keys
 

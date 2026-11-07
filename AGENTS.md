@@ -13,6 +13,7 @@
 - `config/corne_min.keymap` — source of truth for bindings and behaviors.
 - `config/corne_min.conf` — source of truth for ZMK feature configuration.
 - `config/src/bootloader_chord.c` — per-half local bootloader chord handling.
+- `config/src/hrm_led.c` — status LED blink when the HRM layer toggles (left half only).
 - `config/corne_min.json` — physical 42-key geometry used for local rendering.
 - `KEY_POSITIONS.svg` — canonical position-number map (`0`–`41`).
 - `keymap-drawer/corne_min.svg` — canonical visual keymap.
@@ -25,14 +26,14 @@ Positions `0` + `38` enter the left bootloader; positions `11` + `39` enter the 
 
 | Index | Name | Purpose |
 | ---: | --- | --- |
-| 0 | BASE | QWERTY and home-row modifiers |
-| 1 | NO HRM | Plain home-row letters; toggled by `&tog 1` on FN position `13` |
+| 0 | BASE | QWERTY, plain home row (home-row modifiers off) |
+| 1 | HRM | Home-row modifiers; toggled by `&tog 1` on FN position `13` |
 | 2 | NUMBER | Number row `1`–`0`; symbols via Shift |
 | 3 | FN | Function keys `F1`–`F12` and Bluetooth |
 | 4 | MOUSELESS | Keyboard-driven shortcuts/navigation |
 | 5 | NAV | Arrow cluster, Home/End, Page Up/Down |
 
-NO HRM must stay directly above BASE. ZMK checks the highest active layer first, so a higher index would cover the FN media keys and the NAV arrows on the same home-row positions. A layer toggle is not saved: home-row mods come back on after a restart or a wake from sleep.
+HRM must stay directly above BASE. ZMK checks the highest active layer first, so a higher index would cover the FN media keys and the NAV arrows on the same home-row positions. Home-row mods are off at power-on by design: a layer toggle is not saved, so they turn off again after a restart or a wake from sleep. Toggling HRM blinks the left status LED once: yellow when it turns on, magenta when it turns off (`config/src/hrm_led.c`, central only). The LED is three on/off GPIOs, so only 7 colors exist; orange is not possible. `hrm_led.c` mirrors the rgbled module's private `struct blink_item` and `led_msgq`, so `config/west.yml` pins that module to a commit; re-check the struct before moving the pin.
 
 There is no symbols layer. Every symbol it held is `Shift` + a number on NUMBER, so the layer was removed rather than duplicated. Brackets stay on `lbrc_morph`/`rbrc_morph` at position `18`/`30`.
 
